@@ -1,0 +1,10 @@
+{
+  "local": {
+    "api": "https://localhost:44369"
+  },
+  "prod": {
+    "api": "https://jthreadsapi.jrdn.tech"
+  },
+  "api": "https://localhost:44369",
+  "dashboard": "http://localhost:3000"
+}

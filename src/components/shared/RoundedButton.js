@@ -8,6 +8,9 @@ const styles = {
     borderRadius: 25,
     padding: "7px 16px",
     color: "black",
+    "&:hover": {
+      //background: "rgba(111, 65, 248, 0.2);",
+    },
   },
 }
 

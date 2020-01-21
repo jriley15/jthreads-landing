@@ -5,6 +5,7 @@ module.exports = {
     author: `@jrdn`,
   },
   plugins: [
+    "gatsby-plugin-redux",
     "gatsby-plugin-top-layout",
     {
       resolve: "gatsby-plugin-material-ui",
