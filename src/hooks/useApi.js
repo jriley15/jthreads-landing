@@ -20,6 +20,7 @@ export default function useApi() {
 
     await Axios.post(api + url, body, {
       headers: headers,
+      withCredentials: true,
     })
       .then(res => {
         response = res.data
@@ -43,6 +44,7 @@ export default function useApi() {
     await Axios.get(api + url, {
       params: params,
       headers: headers,
+      withCredentials: true,
     })
       .then(res => {
         response = res.data

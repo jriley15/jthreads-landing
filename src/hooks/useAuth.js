@@ -1,26 +1,33 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import jwt_decode from "jwt-decode"
+import { AuthState } from "../redux/reducers/authReducer"
+import { useCookies } from "react-cookie"
 
 const useAuth = () => {
   const authState = useSelector(state => state.authState)
   const dispatch = useDispatch()
+  const [cookies, setCookie, removeCookie] = useCookies()
 
   const login = token => {
     dispatch({ type: "LOGIN", token: token, payload: jwt_decode(token) })
-    localStorage.setItem("token", token)
   }
 
-  const logout = () => {
+  const logout = async () => {
+    removeCookie("token")
     dispatch({ type: "LOGOUT" })
-    localStorage.removeItem("token")
+  }
+
+  if (!authState.token) {
+    if (cookies.token) login(cookies.token)
+    console.log("Token cookie: ", cookies.token)
   }
 
   return {
     login: login,
-    isAuthenticated: authState.isAuthenticated,
     logout: logout,
-    token: authState.token,
+    ...authState,
+    token: cookies.Token || authState.token,
   }
 }
 

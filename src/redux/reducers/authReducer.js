@@ -2,7 +2,6 @@ const initialState = {
   isAuthenticated: false,
   token: "",
   user: {},
-  checkedForAuth: false,
 }
 
 const authReducer = (state, action) => {
@@ -21,9 +20,6 @@ const authReducer = (state, action) => {
       return {
         ...initialState,
       }
-
-    case "CHECKED_FOR_AUTH":
-      return { ...state, checkedForAuth: true }
 
     default:
       return state

@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 export default function Navbar() {
   const classes = useStyles()
 
-  const { isAuthenticated, logout } = useAuth()
+  const { isAuthenticated, logout, token } = useAuth()
   const [registerOpen, setRegisterOpen] = useState(false)
   const [loginOpen, setLoginOpen] = useState(false)
 
