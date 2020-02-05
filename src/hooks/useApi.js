@@ -1,7 +1,7 @@
 import useAuth from "./useAuth"
 import Axios from "axios"
 import { formatErrorResponse } from "../util/errorHelper"
-import config from "../config.json"
+import config from "../util/config"
 
 export default function useApi() {
   const { token } = useAuth()
