@@ -25,7 +25,12 @@ export default function Register({ open, setOpen }) {
   return (
     <div>
       <Formik
-        initialValues={{ email: "", password: "", confirmPassword: "" }}
+        initialValues={{
+          email: "",
+          password: "",
+          confirmPassword: "",
+          displayName: "",
+        }}
         onSubmit={async (data, { setSubmitting, resetForm, setErrors }) => {
           setSubmitting(true)
           let response = await post("/Auth/Register", data)
@@ -41,6 +46,7 @@ export default function Register({ open, setOpen }) {
             .required("Required"),
           password: Yup.string().required("Required"),
           confirmPassword: Yup.string().required("Required"),
+          displayName: Yup.string().required("Required"),
         })}
       >
         {({
@@ -76,9 +82,26 @@ export default function Register({ open, setOpen }) {
                     ))}
                   </div>
                 )}
-
                 <TextField
                   autoFocus
+                  margin="dense"
+                  label="Display Name"
+                  variant="outlined"
+                  name="displayName"
+                  fullWidth
+                  value={values.displayName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                  error={
+                    errors.displayName && touched.displayName
+                      ? errors.displayName
+                      : false
+                  }
+                  helperText={touched.displayName && errors.displayName}
+                  disabled={isSubmitting}
+                />
+                <TextField
                   margin="dense"
                   label="Email Address"
                   variant="outlined"

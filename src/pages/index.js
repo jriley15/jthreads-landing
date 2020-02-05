@@ -32,10 +32,10 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   const classes = useStyles()
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" />
       <div className={classes.root}>
         <Box display="flex" justifyContent="center">

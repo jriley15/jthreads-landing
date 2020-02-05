@@ -1,7 +1,7 @@
 const initialState = {
   isAuthenticated: false,
   token: "",
-  user: {},
+  claims: {},
 }
 
 const authReducer = (state, action) => {
@@ -11,7 +11,17 @@ const authReducer = (state, action) => {
     case "LOGIN":
       return {
         ...state,
-        user: action.payload,
+        claims: {
+          email:
+            action.payload[
+              "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+            ],
+          id:
+            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
+          name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+          expires: "exp",
+          issuer: "iss",
+        },
         isAuthenticated: true,
         token: action.token,
       }

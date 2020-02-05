@@ -20,7 +20,6 @@ const useAuth = () => {
 
   if (!authState.token) {
     if (cookies.token) login(cookies.token)
-    console.log("Token cookie: ", cookies.token)
   }
 
   return {

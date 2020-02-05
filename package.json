@@ -20,6 +20,7 @@
     "gatsby-transformer-sharp": "^2.3.7",
     "jwt-decode": "^2.2.0",
     "prop-types": "^15.7.2",
+    "query-string": "^6.10.1",
     "react": "^16.12.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.12.0",

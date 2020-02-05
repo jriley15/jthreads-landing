@@ -10,6 +10,7 @@ import Register from "./Register"
 import Login from "./Login"
 import useAuth from "../hooks/useAuth"
 import config from "../util/config"
+import queryString from "query-string"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,12 +28,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Navbar() {
+export default function Navbar({ location }) {
   const classes = useStyles()
-
   const { isAuthenticated, logout, token } = useAuth()
-  const [registerOpen, setRegisterOpen] = useState(false)
-  const [loginOpen, setLoginOpen] = useState(false)
+  const { login, register } = queryString.parse(location.search)
+  const [loginOpen, setLoginOpen] = useState(login)
+  const [registerOpen, setRegisterOpen] = useState(register)
 
   return (
     <div className={classes.root}>
