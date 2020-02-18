@@ -10,7 +10,7 @@ import SecondaryButton from "../components/shared/SecondaryButton"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(15),
+    marginTop: theme.spacing(20),
   },
   mainImage: {
     width: "300px",

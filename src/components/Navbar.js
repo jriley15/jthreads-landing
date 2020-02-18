@@ -11,12 +11,13 @@ import Login from "./Login"
 import useAuth from "../hooks/useAuth"
 import config from "../util/config"
 import queryString from "query-string"
+import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  title: {
+  flexGrow: {
     flexGrow: 1,
   },
   navButton: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Navbar({ location }) {
+export default function Navbar({ location, hideLogo, className }) {
   const classes = useStyles()
   const { isAuthenticated, logout, token } = useAuth()
   const { login, register } = queryString.parse(location.search)
@@ -37,12 +38,26 @@ export default function Navbar({ location }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar variant="dense">
-          <Typography variant="h6" className={classes.title}>
-            JThreads
-          </Typography>
-          <RoundedButton className={classes.navButton}>About</RoundedButton>
+      <AppBar position="fixed" className={`${classes.appBar} ${className}`}>
+        <Toolbar>
+          {!hideLogo && (
+            <Typography
+              variant="h6"
+              style={{ textDecoration: "none", color: "inherit" }}
+              component={Link}
+              to="/"
+            >
+              JThreads
+            </Typography>
+          )}
+          <div className={classes.flexGrow} />
+          <RoundedButton
+            className={classes.navButton}
+            component={Link}
+            to="/documentation"
+          >
+            Docs
+          </RoundedButton>
           {isAuthenticated ? (
             <>
               <RoundedButton

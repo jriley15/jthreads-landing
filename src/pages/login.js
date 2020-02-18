@@ -190,7 +190,11 @@ const IndexPage = ({ location }) => {
                     className={classes.loginButton}
                     fullWidth
                   >
-                    {isSubmitting ? <CircularProgress size={20} /> : "Log in"}
+                    {isSubmitting ? (
+                      <CircularProgress size={20} style={{ color: "white" }} />
+                    ) : (
+                      "Log in"
+                    )}
                   </Button>
                   <Box display="flex" justifyContent="center">
                     <Typography
