@@ -14,7 +14,7 @@ const useAuth = () => {
   }
 
   const logout = async () => {
-    removeCookie("token")
+    removeCookie("token", { sameSite: "strict", secure: true })
     dispatch({ type: "LOGOUT" })
   }
 
