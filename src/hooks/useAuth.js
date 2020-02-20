@@ -14,7 +14,11 @@ const useAuth = () => {
   }
 
   const logout = async () => {
-    removeCookie("token", { sameSite: "strict", secure: true })
+    let options = {}
+    if (process.env.NODE_ENV === "production")
+      options = { path: "/", domain: ".jrdn.tech" }
+
+    removeCookie("token", options)
     dispatch({ type: "LOGOUT" })
   }
 
