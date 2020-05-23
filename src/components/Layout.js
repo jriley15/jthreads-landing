@@ -9,13 +9,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Layout({ children, location, hideNav }) {
+export default function Layout({ children, location, hideNav, registerPage }) {
   const classes = useStyles()
 
   return (
     <div>
       <CookiesProvider>
-        {!hideNav && <Navbar location={location} />}
+        {!hideNav && <Navbar location={location} registerPage={registerPage} />}
         <div className={classes.content}>{children}</div>
       </CookiesProvider>
     </div>

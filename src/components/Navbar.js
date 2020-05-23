@@ -29,12 +29,17 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Navbar({ location, hideLogo, className }) {
+export default function Navbar({
+  location,
+  hideLogo,
+  className,
+  registerPage,
+}) {
   const classes = useStyles()
   const { isAuthenticated, logout, token } = useAuth()
-  const { login, register } = queryString.parse(location.search)
+  const { login, register } = location ? queryString.parse(location.search) : {}
   const [loginOpen, setLoginOpen] = useState(login)
-  const [registerOpen, setRegisterOpen] = useState(register)
+  const [registerOpen, setRegisterOpen] = useState(register || registerPage)
 
   return (
     <div className={classes.root}>

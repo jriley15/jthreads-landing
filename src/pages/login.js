@@ -98,6 +98,8 @@ const IndexPage = ({ location }) => {
                     { token: response.data.token },
                     config.embed
                   )
+                  window.opener.postMessage("success", config.embed)
+                  window.opener.postMessage("success", config.embedv2)
                   window.close()
                 } else {
                   setErrors(response.errors)
