@@ -11,6 +11,6 @@
     "dashboard": "https://app.jrdn.tech",
     "landing": "https://jthreads.jrdn.tech",
     "embed": "https://embed.jrdn.tech",
-    "embedv2": "https://devjthreads.jrdn.tech"
+    "embedv2": "https://jthreads-ssr.jrdn.tech"
   }
 }
